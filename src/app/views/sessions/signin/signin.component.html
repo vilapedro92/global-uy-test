@@ -23,7 +23,7 @@
     <app-guy-button-loading
       class="mb-6"
       [text]="'Continuar'"
-      [loading]="false"
+      [loading]="loading"
       (clickButton)="signin()"
     >
     </app-guy-button-loading>
@@ -38,7 +38,6 @@
     <label class="guy-not-account mb-4">¿No tienes una cuenta?</label>
 
     <app-guy-button
-      typeof=""
       [text]="'Registrarme'"
       (clickButton)="signin()"
     >

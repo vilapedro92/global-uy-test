@@ -1,5 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AppAuthService} from "../../../shared/services/app-auth.service";
+import {finalize, take, tap} from "rxjs";
+import {NotificationService} from "../../../shared/services/notification.service";
+import {UserInterface} from "../../../shared/interfaces/user.interface";
+import {Router} from "@angular/router";
 
 export interface SessionFormControl {
   username: FormControl,
@@ -19,8 +24,60 @@ export class SigninComponent {
     password: new FormControl('', Validators.required)
   })
 
+  loading: boolean = false;
+
+  constructor(
+    private appAuth: AppAuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {
+  }
+
   signin() {
-    console.log('dentro')
+    const [username, password] = [this.formGroup.controls.username.value, this.formGroup.controls.password.value];
+
+    if (!username || !password) {
+      this._formNotValid();
+      return
+    }
+
+    this.loading = true;
+    this.appAuth.signin(username, password)
+      .pipe(
+        tap((user: UserInterface) => this._saveUserInSession(user)),
+        finalize(() => this.loading = false),
+        take(1),
+      )
+      .subscribe({
+        next: res => {
+          res ? this._goToDashboard() : this._userNotLegal()
+        },
+        error: err => {
+          this._errorService(err);
+        },
+      })
+  }
+
+  private _saveUserInSession(user: UserInterface) {
+    const {password, ...rest} = user;
+    sessionStorage.setItem('user', JSON.stringify(rest));
+  }
+
+  private _goToDashboard() {
+    // TODO poner la ruta
+    this.router.navigate(['/'])
+  }
+
+  private _formNotValid() {
+    this.notificationService.openInfo('Complete los campos requeridos *')
+  }
+
+  private _userNotLegal() {
+    this.notificationService.openInfo('Sus credenciales son incorrectas!')
+  }
+
+  private _errorService<T>(err: T) {
+    this.notificationService.openInfo(`Error ${err}`)
   }
 
 }
