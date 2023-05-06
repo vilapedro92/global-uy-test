@@ -49,8 +49,8 @@ export class SigninComponent {
         take(1),
       )
       .subscribe({
-        next: res => {
-          res ? this._goToDashboard() : this._userNotLegal()
+        next: user => {
+          user ? this._goToDashboard(user) : this._userNotLegal()
         },
         error: err => {
           this._errorService(err);
@@ -63,8 +63,8 @@ export class SigninComponent {
     sessionStorage.setItem('user', JSON.stringify(rest));
   }
 
-  private _goToDashboard() {
-    // TODO poner la ruta
+  private _goToDashboard(user: UserInterface) {
+    // TODO poner la ruta, verificar rol para determinar la ruta.
     this.router.navigate(['/'])
   }
 
