@@ -38,22 +38,6 @@ export class AppAuthService {
     return of(requestsJson as IRequestModel[])
   }
 
-  constructor() {
-
-    // TODO TEMPORAL ....
-
-    // for (const argumentsKey in productJson) {
-    //   console.log(productJson[argumentsKey])
-    // }
-    //
-    // for (const argumentsKey in usersJson) {
-    //   console.log(usersJson[argumentsKey])
-    // }
-    //
-    // for (const argumentsKey in requestsJson) {
-    //   console.log(requestsJson[argumentsKey])
-    // }
-  }
 
   signin(email: string, password: string): Observable<UserInterface> {
     return new Observable(subscriber => {

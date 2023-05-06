@@ -59,8 +59,10 @@ export class SigninComponent {
   }
 
   private _saveUserInSession(user: UserInterface) {
-    const {password, ...rest} = user;
-    sessionStorage.setItem('user', JSON.stringify(rest));
+    if (user) {
+      const {password, ...rest} = user;
+      sessionStorage.setItem('user', JSON.stringify(rest));
+    }
   }
 
   private _goToDashboard(user: UserInterface) {
