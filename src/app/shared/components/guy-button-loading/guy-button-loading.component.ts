@@ -11,7 +11,7 @@ export class GuyButtonLoadingComponent {
   @Input() loading!: boolean
   @Input() disable!: boolean
   @Input() text: string = 'Boton'
-  @Input() textLoading: string = 'Cargando...'
+  @Input() textLoading: string = 'Espere...'
   @Input() color: 'primary' | 'accent' | 'warn' = 'primary'
 
   @Output() clickButton = new EventEmitter<boolean>();
