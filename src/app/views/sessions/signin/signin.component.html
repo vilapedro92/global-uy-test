@@ -1,1 +1,50 @@
-<p>signin works!</p>
+<section class="guy-session-container">
+  <div class="guy-div-container">
+
+    <guy-logo></guy-logo>
+
+    <form
+      class="grid grid-cols-1 gap-x-8 gap-y-2"
+      [formGroup]="formGroup">
+      <app-guy-form-field-input
+        [label]="'Correo Electrónico'"
+        [control]="formGroup.controls.username"
+        [type]="'text'"
+      ></app-guy-form-field-input>
+      <guy-form-field-input-password
+        class="mt-1"
+        [label]="'Contraseña'"
+        [control]="formGroup.controls.password"
+      ></guy-form-field-input-password>
+    </form>
+
+    <label class="guy-forgot-pass">¿Olvidaste tu contraseña?</label>
+
+    <app-guy-button-loading
+      typeof=""
+      [text]="'Continuar'"
+      [loading]="false"
+      (clickButton)="signin()"
+    >
+    </app-guy-button-loading>
+
+    <guy-divisor></guy-divisor>
+
+    <app-guy-button
+      typeof=""
+      [text]="'Google'"
+      (clickButton)="signin()"
+    >
+    </app-guy-button>
+
+    <label class="guy-not-account">¿No tienes una cuenta?</label>
+
+    <app-guy-button
+      typeof=""
+      [text]="'Registrarme'"
+      (clickButton)="signin()"
+    >
+    </app-guy-button>
+
+  </div>
+</section>
