@@ -4,7 +4,7 @@
     <guy-logo></guy-logo>
 
     <form
-      class="grid grid-cols-1 gap-x-8 gap-y-2"
+      class="grid grid-cols-1 gap-y-2"
       [formGroup]="formGroup">
       <app-guy-form-field-input
         [label]="'Correo Electrónico'"
@@ -28,14 +28,12 @@
     >
     </app-guy-button-loading>
 
-    <guy-divisor class="mb-6"></guy-divisor>
+    <guy-divisor class="mb-6">
+    </guy-divisor>
 
-    <app-guy-button
-      class="mb-6"
-      [text]="'Google'"
-      (clickButton)="signin()"
-    >
-    </app-guy-button>
+    <guy-google-btn
+      class="mb-6 m-auto">
+    </guy-google-btn>
 
     <label class="guy-not-account mb-4">¿No tienes una cuenta?</label>
 
