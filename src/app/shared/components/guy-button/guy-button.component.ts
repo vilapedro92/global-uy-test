@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
+import {BtnColorEnum, BtnColorType} from "../../enum/btn-color.enum";
 
 @Component({
   selector: 'app-guy-button',
@@ -12,7 +13,7 @@ export class GuyButtonComponent {
   @Input() text: string = 'Button'
   @Input() icon!: string
   @Input() disabled: boolean = false
-  @Input() color: ThemePalette = 'primary';
+  @Input() color: BtnColorType = BtnColorEnum.LIGHT;
 
   @Output() clickButton = new EventEmitter<boolean>();
 

@@ -1,1 +1,43 @@
-<p>user-list works!</p>
+<section class="guy-list-container">
+
+  <!--  TODO => SACAR ESTO A UN COMPONENTE-->
+  <div class="guy-list-header mb-10">
+    <label class="guy-header-label">Usuarios</label>
+    <div class="w-48">
+      <app-guy-button
+        [text]="'Crear nuevo'"
+        [icon]="'add'"
+        [color]="btnColor.DARK">
+      </app-guy-button>
+    </div>
+  </div>
+  <!--  TODO => ------------------------------>
+
+  <div class="guy-list-header mb-6">
+    <div class="w-96">
+      <guy-form-filed-search></guy-form-filed-search>
+    </div>
+    <div class="guy-remove-all">
+      <mat-icon>delete</mat-icon>
+      <span>Borrar selección (2)</span>
+    </div>
+  </div>
+
+  <!--  TODO => --------------------------------->
+
+  <div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Activos">
+        <div class="pt-8">
+          Activos
+        </div>
+      </mat-tab>
+      <mat-tab label="Inactivos">
+        <div class="pt-8">
+          Inactivos
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</section>

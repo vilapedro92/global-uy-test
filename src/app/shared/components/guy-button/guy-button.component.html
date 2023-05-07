@@ -1,11 +1,11 @@
 <div>
   <button
-          class="guy-color-light"
+          [ngClass]="color === 'LIGHT' ? 'guy-color-light' : 'guy-color-dark'"
           [disabled]="disabled"
           (click)="onClick()"
   >
     <div class="center-div text-center">
-      {{ text }} <span matSuffix *ngIf="icon" class="material-icons ml-2"> {{icon}} </span>
+      <span matPrefix *ngIf="icon" class="material-icons mr-2"> {{icon}} </span>  {{ text }}
     </div>
   </button>
 </div>

@@ -15,8 +15,9 @@ import {GuyButtonLoadingComponent} from './guy-button-loading/guy-button-loading
 import {GuyDivisorComponent} from './guy-divisor/guy-divisor.component';
 import {GuyGoogleBtnComponent} from './guy-google-btn/guy-google-btn.component';
 import {GuySideNavComponent} from './guy-side-nav/guy-side-nav.component';
-import { GuySideNavItemComponent } from './guy-side-nav-item/guy-side-nav-item.component';
+import {GuySideNavItemComponent} from './guy-side-nav-item/guy-side-nav-item.component';
 import {SharedDirectivesModule} from "../directives/shared-directives.modules";
+import {GuyFormFiledSearchComponent} from './guy-form-filed-search/guy-form-filed-search.component';
 
 const components = [
   AuthLayoutComponent,
@@ -29,7 +30,8 @@ const components = [
   GuyDivisorComponent,
   GuyGoogleBtnComponent,
   GuySideNavComponent,
-  GuySideNavItemComponent
+  GuySideNavItemComponent,
+  GuyFormFiledSearchComponent
 ]
 
 @NgModule({
