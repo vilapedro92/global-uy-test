@@ -9,7 +9,6 @@ export class GuySocialAuthService {
 
   // private socialAuthService = inject(SocialAuthService);
 
-
   signinWithGoogle() {
     // return from(this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID));
   }

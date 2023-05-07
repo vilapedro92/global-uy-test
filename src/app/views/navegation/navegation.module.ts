@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { NavegationRoutingModule } from './navegation-routing.module';
+import {NavegationRoutingModule} from './navegation-routing.module';
 
 
 @NgModule({
@@ -11,4 +11,5 @@ import { NavegationRoutingModule } from './navegation-routing.module';
     NavegationRoutingModule
   ]
 })
-export class NavegationModule { }
+export class NavegationModule {
+}

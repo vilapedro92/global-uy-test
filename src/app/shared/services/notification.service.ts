@@ -9,6 +9,6 @@ export class NotificationService {
   matSnackBar = inject(MatSnackBar);
 
   openInfo(text: string, time: number = 5000) {
-    this.matSnackBar.open(text, "CERRAR", { duration: time })
+    this.matSnackBar.open(text, "CERRAR", {duration: time})
   }
 }
