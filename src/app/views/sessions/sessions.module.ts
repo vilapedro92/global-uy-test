@@ -7,6 +7,7 @@ import {SharedModule} from "../../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RecoverAccountComponent } from './recover-account/recover-account.component';
 import { RegisterComponent } from './register/register.component';
+import {GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
 
 
 @NgModule({
@@ -15,13 +16,14 @@ import { RegisterComponent } from './register/register.component';
     RecoverAccountComponent,
     RegisterComponent
   ],
-  imports: [
-    CommonModule,
-    SessionsRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        SessionsRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        GoogleSigninButtonModule,
+    ]
 })
 export class SessionsModule {
 }

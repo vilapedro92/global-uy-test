@@ -5,6 +5,7 @@ import {finalize, take, tap} from "rxjs";
 import {NotificationService} from "../../../shared/services/notification.service";
 import {UserInterface} from "../../../shared/interfaces/user.interface";
 import {Router} from "@angular/router";
+import {GuySocialAuthService} from "../../../shared/services/guy-social-auth.service";
 
 export interface SessionFormControl {
   username: FormControl,
@@ -29,6 +30,7 @@ export class SigninComponent {
   constructor(
     private appAuth: AppAuthService,
     private router: Router,
+    private guySocialAuthService: GuySocialAuthService,
     private notificationService: NotificationService
   ) {
   }
@@ -56,6 +58,14 @@ export class SigninComponent {
           this._errorService(err);
         },
       })
+  }
+
+  signinWithGoogle() {
+    this.guySocialAuthService.signinWithGoogle()
+    //   .subscribe({
+    //   next: res => console.log(res),
+    //   error: err => console.log(err)
+    // })
   }
 
   private _saveUserInSession(user: UserInterface) {

@@ -7,9 +7,9 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./guy-form-field-input-password.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GuyFormFieldInputPasswordComponent implements OnInit {
+export class GuyFormFieldInputPasswordComponent {
 
-  private _cdr = inject(ChangeDetectorRef);
+  private cdr = inject(ChangeDetectorRef);
 
   @Input() control: FormControl = new FormControl<any>({});
   @Input() hintText = '';
@@ -21,19 +21,12 @@ export class GuyFormFieldInputPasswordComponent implements OnInit {
   type: 'text' | 'password' = 'password';
   show = false;
 
-  ngOnInit() {
-    // if (this.validatePassword) {
-    //   this.control.addValidators(passwordValidator);
-    //   this.control.updateValueAndValidity();
-    // this._cdr.detectChanges();
-    // }
-  }
 
   showPassword() {
     this.show = !this.show;
     this.icon = this.show ? 'visibility' : 'visibility_off';
     this.type = this.show ? 'text' : 'password';
-    this._cdr.detectChanges();
+    this.cdr.detectChanges();
   }
 
 }
