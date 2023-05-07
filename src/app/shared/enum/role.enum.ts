@@ -1,7 +1,7 @@
 export enum RoleEnum {
   'Administrador' = 'Administrador',
   'Usuario' = 'Usuario',
-  'All' = '*'
+  'All' = 'All'
 }
 
 export type RoleType = 'Administrador' | 'Usuario' | 'All';

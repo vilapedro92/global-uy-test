@@ -1,0 +1,20 @@
+<section>
+  <guy-logo></guy-logo>
+
+  <div class="flex flex-col gap-y-6 mt-10">
+    <ng-container *ngFor="let navItem of navigationService.navigationList">
+      <guy-side-nav-item
+        *guyPermission="[navItem.permission]"
+        [routerLink]="navItem.routerLink"
+        [label]="navItem.label"
+        [icon]="navItem.icon">
+      </guy-side-nav-item>
+    </ng-container>
+  </div>
+
+  <a (click)="logOut()" class="guy-close flex">
+    <mat-icon>logout</mat-icon>
+    <span class="ml-2">Cerrar</span>
+  </a>
+
+</section>

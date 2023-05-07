@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./shared/components/layouts/auth-layout/auth-layout.component";
 import {NavLayoutsComponent} from "./shared/components/layouts/nav-layouts/nav-layouts.component";
+import {UserIsLoggedIn} from "./shared/guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   {
     path: '',
     component: NavLayoutsComponent,
+    canActivate: [UserIsLoggedIn],
     children: [
       {
         path: '',

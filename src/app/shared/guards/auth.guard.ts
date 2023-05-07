@@ -33,6 +33,8 @@ export class UserNotLoggedIn implements CanActivate {
   }
 }
 
+// TODO AJUSTAR LOS GUARDS PARA Q TE REDIRECCIONE...
+
 @Injectable({
   providedIn: 'root',
 })

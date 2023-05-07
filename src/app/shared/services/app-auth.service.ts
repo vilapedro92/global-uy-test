@@ -39,7 +39,7 @@ export class AppAuthService {
   }
 
 
-  signin(email: string, password: string): Observable<UserInterface> {
+  signing(email: string, password: string): Observable<UserInterface> {
     return new Observable(subscriber => {
       const user = this.oAuth.find(el => el.email === email && el.password === password);
       subscriber.next(user);

@@ -6,6 +6,7 @@ import {NotificationService} from "../../../shared/services/notification.service
 import {UserInterface} from "../../../shared/interfaces/user.interface";
 import {Router} from "@angular/router";
 import {GuySocialAuthService} from "../../../shared/services/guy-social-auth.service";
+import {PermissionsService} from "../../../shared/services/permissions.service";
 
 export interface SessionFormControl {
   username: FormControl,
@@ -29,6 +30,7 @@ export class SigninComponent {
 
   constructor(
     private appAuth: AppAuthService,
+    private permissionsService: PermissionsService,
     private router: Router,
     private guySocialAuthService: GuySocialAuthService,
     private notificationService: NotificationService
@@ -44,7 +46,7 @@ export class SigninComponent {
     }
 
     this.loading = true;
-    this.appAuth.signin(username, password)
+    this.appAuth.signing(username, password)
       .pipe(
         tap((user: UserInterface) => this._saveUserInSession(user)),
         finalize(() => this.loading = false),
@@ -76,8 +78,9 @@ export class SigninComponent {
   }
 
   private _goToDashboard(user: UserInterface) {
-    // TODO poner la ruta, verificar rol para determinar la ruta.
-    this.router.navigate(['/'])
+    this.permissionsService.isAdmin() ?
+      this.router.navigate(['/user/list']) :
+      this.router.navigate(['/product/list']);
   }
 
   private _formNotValid() {

@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {IsAdmin} from "../../shared/guards/auth.guard";
 
 const routes: Routes = [
   {
     path: 'user',
+    canActivate: [IsAdmin],
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
     data: {title: 'Users', breadcrumb: 'Users List'}
   },
