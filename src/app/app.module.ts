@@ -28,21 +28,21 @@ import {
     SocialLoginModule
   ],
   providers: [
-    // {
-    //   provide: 'SocialAuthServiceConfig',
-    //   useValue: {
-    //     autoLogin: false,
-    //     providers: [
-    //       {
-    //         id: GoogleLoginProvider.PROVIDER_ID,
-    //         provider: new GoogleLoginProvider('586077437357-5ig7sbeqvhbme3b6itv4630cdgh1t2o2.apps.googleusercontent.com')
-    //       }
-    //     ],
-    //     onError: (err) => {
-    //       console.error({err});
-    //     }
-    //   } as SocialAuthServiceConfig,
-    // }
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('586077437357-5ig7sbeqvhbme3b6itv4630cdgh1t2o2.apps.googleusercontent.com')
+          }
+        ],
+        onError: (err) => {
+          console.error({err});
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })

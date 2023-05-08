@@ -64,10 +64,10 @@ export class SigninComponent {
 
   signinWithGoogle() {
     this.guySocialAuthService.signinWithGoogle()
-    //   .subscribe({
-    //   next: res => console.log(res),
-    //   error: err => console.log(err)
-    // })
+      .subscribe({
+      next: res => console.log(res),
+      error: err => console.log(err)
+    })
   }
 
   private _saveUserInSession(user: UserInterface) {

@@ -7,9 +7,9 @@ import {from} from "rxjs";
 })
 export class GuySocialAuthService {
 
-  // private socialAuthService = inject(SocialAuthService);
+  private socialAuthService = inject(SocialAuthService);
 
   signinWithGoogle() {
-    // return from(this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID));
+    return from(this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID));
   }
 }

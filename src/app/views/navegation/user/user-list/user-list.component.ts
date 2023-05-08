@@ -34,8 +34,10 @@ export class UserListComponent implements OnInit {
     this._getUsers();
   }
 
-  updateSelection(event: any) {
-    this.usersSelected = event;
+  applyFilter(event: Event) {
+    this.search = (event.target as HTMLInputElement).value === "" ?
+      " " :
+      (event.target as HTMLInputElement).value;
   }
 
   remove() {
@@ -45,15 +47,12 @@ export class UserListComponent implements OnInit {
     this.usersSelected = [];
   }
 
-  applyFilter(event: Event) {
-    this.search = (event.target as HTMLInputElement).value === "" ?
-      " " :
-      (event.target as HTMLInputElement).value;
+  updateSelection(event: any) {
+    this.usersSelected = event;
   }
 
   private _getUsers() {
     this.users$ = this.appAuthService.users$;
   }
-
 
 }
