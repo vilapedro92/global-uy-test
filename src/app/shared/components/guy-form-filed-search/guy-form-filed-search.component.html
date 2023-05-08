@@ -1,4 +1,4 @@
 <mat-form-field appearance="outline">
-  <input matInput placeholder="Buscar">
+  <input (keyup)="applyFilter($event)" matInput placeholder="Buscar">
   <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>

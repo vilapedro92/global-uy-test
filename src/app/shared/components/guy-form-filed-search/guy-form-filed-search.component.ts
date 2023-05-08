@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'guy-form-filed-search',
@@ -7,5 +7,11 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GuyFormFiledSearchComponent {
+
+  @Output() keyUP = new EventEmitter<any>();
+
+  applyFilter(event: Event) {
+    this.keyUP.emit(event)
+  }
 
 }

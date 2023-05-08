@@ -12,9 +12,12 @@
     </ng-container>
   </div>
 
-  <a (click)="logOut()" class="guy-close flex">
-    <mat-icon>logout</mat-icon>
-    <span class="ml-2">Cerrar</span>
-  </a>
+  <div class="guy-div-close">
+    <label>({{permissionsService.getUserLogedeId()}})</label>
+    <a (click)="permissionsService.logOut()" class="guy-close flex">
+      <mat-icon>logout</mat-icon>
+      <span class="ml-2">Cerrar</span>
+    </a>
+  </div>
 
 </section>

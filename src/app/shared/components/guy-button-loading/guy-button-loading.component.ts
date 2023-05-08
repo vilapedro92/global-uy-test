@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {BtnColorEnum, BtnColorType} from "../../enum/btn-color.enum";
 
 @Component({
   selector: 'app-guy-button-loading',
@@ -12,7 +13,7 @@ export class GuyButtonLoadingComponent {
   @Input() disable!: boolean
   @Input() text: string = 'Boton'
   @Input() textLoading: string = 'Espere...'
-  @Input() color: 'primary' | 'accent' | 'warn' = 'primary'
+  @Input() color: BtnColorType = BtnColorEnum.DARK
 
   @Output() clickButton = new EventEmitter<boolean>();
 

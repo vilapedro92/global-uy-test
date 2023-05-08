@@ -15,11 +15,13 @@
 
   <div class="guy-list-header mb-6">
     <div class="w-96">
-      <guy-form-filed-search></guy-form-filed-search>
+      <guy-form-filed-search
+      (keyUP)="applyFilter($event)">
+      </guy-form-filed-search>
     </div>
     <div class="guy-remove-all">
       <mat-icon>delete</mat-icon>
-      <span>Borrar selección (2)</span>
+      <span (click)="remove()">Borrar selección ({{usersSelected.length}})</span>
     </div>
   </div>
 
@@ -28,16 +30,25 @@
   <div>
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="Activos">
-        <div class="pt-8">
-          Activos
-        </div>
+        <ng-container *ngTemplateOutlet="table"></ng-container>
       </mat-tab>
       <mat-tab label="Inactivos">
-        <div class="pt-8">
-          Inactivos
-        </div>
+        <ng-container *ngTemplateOutlet="table"></ng-container>
       </mat-tab>
     </mat-tab-group>
   </div>
 
 </section>
+
+<ng-template #table>
+  <div *ngIf="(users$ | async) as users" class="pt-8">
+    <guy-table
+      [elements]="users"
+      [config]="tableConfig"
+      [search]="search"
+      (wasChecked)="updateSelection($event)"
+    >
+    </guy-table>
+  </div>
+</ng-template>
+

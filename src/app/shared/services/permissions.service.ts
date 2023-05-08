@@ -1,11 +1,15 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {RoleEnum, RoleType} from "../enum/role.enum";
 import {UserInterface} from "../interfaces/user.interface";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsService {
+
+  router = inject(Router);
+
   get permissionsList() {
     return RoleEnum
   }
@@ -26,5 +30,15 @@ export class PermissionsService {
   getRole(): RoleType | null {
     const user = <UserInterface>JSON.parse(sessionStorage.getItem('user') ?? '');
     return user.role;
+  }
+
+  getUserLogedeId(): string {
+    const user = <UserInterface>JSON.parse(sessionStorage.getItem('user') ?? '');
+    return user.email;
+  }
+
+  logOut() {
+    sessionStorage.removeItem('user');
+    this.router.navigate([''])
   }
 }

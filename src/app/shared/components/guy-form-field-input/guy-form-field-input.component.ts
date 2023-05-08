@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormControl} from "@angular/forms";
 
 @Component({
-  selector: 'app-guy-form-field-input',
+  selector: 'guy-form-field-input',
   templateUrl: './guy-form-field-input.component.html',
   styleUrls: ['./guy-form-field-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

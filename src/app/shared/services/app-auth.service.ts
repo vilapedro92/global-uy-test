@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import * as productJson from './../../../assets/json/product.json';
-import * as usersJson from './../../../assets/json/users.json';
-import * as requestsJson from './../../../assets/json/requests.json';
-import {Observable, of} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {IProduct} from "../../core/domain/product.model";
 import {IUser} from "../../core/domain/user.model";
 import {IRequestModel} from "../../core/domain/request.model";
 import {UserInterface} from "../interfaces/user.interface";
 import {RoleEnum} from "../enum/role.enum";
+import {UsersClassMeta} from "../class/users.class.meta";
+import {ProductsClassMeta} from "../class/products.class.meta";
+import {RequestsClassMeta} from "../class/requests.class.meta";
 
 @Injectable({
   providedIn: 'root'
@@ -26,17 +26,19 @@ export class AppAuthService {
     }
   ]
 
-  get products() {
-    return of(productJson as IProduct[])
-  }
+  private userList: IUser[] = UsersClassMeta.users;
+  private productsList: IProduct[] = ProductsClassMeta.products;
+  private requestList: IRequestModel[] = RequestsClassMeta.requests;
 
-  get users() {
-    return of(usersJson as IUser[])
-  }
+  private users = new BehaviorSubject<IUser[]>(this.userList);
+  private products = new BehaviorSubject<IProduct[]>(this.productsList);
+  private requests = new BehaviorSubject<IRequestModel[]>(this.requestList);
 
-  get requests() {
-    return of(requestsJson as IRequestModel[])
-  }
+  users$ = this.users.asObservable();
+
+  products$ = this.products.asObservable();
+
+  requests$ = this.requests.asObservable();
 
 
   signing(email: string, password: string): Observable<UserInterface> {
@@ -46,5 +48,12 @@ export class AppAuthService {
     })
   }
 
+  removeUsers(iUser: IUser[]) {
+    iUser.forEach(user => {
+      this.userList = this.userList.filter(el => el.id !== user.id)
+    });
+
+    this.users.next(this.userList)
+  }
 
 }

@@ -1,15 +1,16 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {NavigationService} from "../../services/navigation.service";
+import {PermissionsService} from "../../services/permissions.service";
 
 @Component({
-  selector: 'app-guy-side-nav',
+  selector: 'guy-side-nav',
   templateUrl: './guy-side-nav.component.html',
   styleUrls: ['./guy-side-nav.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GuySideNavComponent {
 
   navigationService = inject(NavigationService);
-  logOut() {}
+  permissionsService = inject(PermissionsService);
 
 }
