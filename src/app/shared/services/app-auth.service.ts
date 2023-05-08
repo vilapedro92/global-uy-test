@@ -48,10 +48,31 @@ export class AppAuthService {
     })
   }
 
+  getNewId(): number {
+    const usersId = this.userList.map(el => el.id);
+    return usersId.length ? Math.max(...usersId) + 1 : 1;
+  }
+
   removeUsers(iUser: IUser[]) {
     iUser.forEach(user => {
       this.userList = this.userList.filter(el => el.id !== user.id)
     });
+
+    this.users.next(this.userList);
+  }
+
+  addUser(iUser: IUser) {
+    const users = [...this.userList, iUser];
+    this.userList = users;
+
+    this.users.next(this.userList);
+  }
+
+  editUser(iUser: IUser) {
+    const index = this.userList.findIndex((user) => user.id === iUser.id);
+    const users = [...this.userList];
+    users[index] = iUser;
+    this.userList = users;
 
     this.users.next(this.userList)
   }

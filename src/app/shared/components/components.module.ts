@@ -19,6 +19,7 @@ import {GuySideNavItemComponent} from './guy-side-nav-item/guy-side-nav-item.com
 import {SharedDirectivesModule} from "../directives/shared-directives.modules";
 import {GuyFormFiledSearchComponent} from './guy-form-filed-search/guy-form-filed-search.component';
 import { GuyTableComponent } from './guy-table/guy-table.component';
+import { GuyFormFieldSelectComponent } from './guy-form-field-select/guy-form-field-select.component';
 
 const components = [
   AuthLayoutComponent,
@@ -33,7 +34,8 @@ const components = [
   GuySideNavComponent,
   GuySideNavItemComponent,
   GuyFormFiledSearchComponent,
-  GuyTableComponent
+  GuyTableComponent,
+  GuyFormFieldSelectComponent
 ]
 
 @NgModule({

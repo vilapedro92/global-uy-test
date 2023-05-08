@@ -7,7 +7,8 @@
       <app-guy-button
         [text]="'Crear nuevo'"
         [icon]="'add'"
-        [color]="btnColor.DARK">
+        [color]="btnColor.DARK"
+        (clickButton)="openInfoDialog()">
       </app-guy-button>
     </div>
   </div>
@@ -16,12 +17,12 @@
   <div class="guy-list-header mb-6">
     <div class="w-96">
       <guy-form-filed-search
-      (keyUP)="applyFilter($event)">
+        (keyUP)="applyFilter($event)">
       </guy-form-filed-search>
     </div>
     <div class="guy-remove-all">
       <mat-icon>delete</mat-icon>
-      <span (click)="remove()">Borrar selección ({{usersSelected.length}})</span>
+      <span (click)="delete()">Borrar selección ({{usersSelected.length}})</span>
     </div>
   </div>
 
@@ -47,6 +48,8 @@
       [config]="tableConfig"
       [search]="search"
       (wasChecked)="updateSelection($event)"
+      (onEdit)="openInfoDialog(false, $event)"
+      (onDelete)="onDelete($event)"
     >
     </guy-table>
   </div>

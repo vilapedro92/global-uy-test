@@ -19,6 +19,8 @@ export class GuyTableComponent implements OnChanges, OnInit {
   @Input() search: string = '';
 
   @Output() wasChecked = new EventEmitter<any>();
+  @Output() onEdit = new EventEmitter<any>();
+  @Output() onDelete = new EventEmitter<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -43,8 +45,16 @@ export class GuyTableComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = ['select', ...this.config.map(el => el.displayedColumn)];
+    this.displayedColumns = ['select', ...this.config.map(el => el.displayedColumn), 'actions'];
     this.dataSource = new MatTableDataSource(this.elements);
+  }
+
+  edit(row: any) {
+    this.onEdit.emit(row);
+  }
+
+  remove(row: any) {
+    this.onDelete.emit(row)
   }
 
   isAllSelected() {

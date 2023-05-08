@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
 import {BtnColorEnum, BtnColorType} from "../../enum/btn-color.enum";
 
 @Component({
-  selector: 'app-guy-button-loading',
+  selector: 'guy-button-loading',
   templateUrl: './guy-button-loading.component.html',
   styleUrls: ['./guy-button-loading.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

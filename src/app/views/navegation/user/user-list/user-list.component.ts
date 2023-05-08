@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BtnColorEnum} from "../../../../shared/enum/btn-color.enum";
 import {UserListMeta as Meta} from "./user-list.meta";
 import {AppAuthService} from "../../../../shared/services/app-auth.service";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {IUser} from "../../../../core/domain/user.model";
+import {UserDialogAddEditComponent} from "../user-dialog-add-edit/user-dialog-add-edit.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-list',
@@ -12,7 +14,7 @@ import {IUser} from "../../../../core/domain/user.model";
 })
 export class UserListComponent implements OnInit {
 
-  users$: Observable<IUser[]> = of([]);
+  users$!: Observable<IUser[]>;
 
   usersSelected: IUser[] = [];
   search!: string;
@@ -26,7 +28,9 @@ export class UserListComponent implements OnInit {
   }
 
   constructor(
-    private appAuthService: AppAuthService
+    private appAuthService: AppAuthService,
+    private cdr: ChangeDetectorRef,
+    private matDialog: MatDialog
   ) {
   }
 
@@ -40,7 +44,7 @@ export class UserListComponent implements OnInit {
       (event.target as HTMLInputElement).value;
   }
 
-  remove() {
+  delete() {
     if (!this.usersSelected.length) return;
 
     this.appAuthService.removeUsers(this.usersSelected);
@@ -49,6 +53,19 @@ export class UserListComponent implements OnInit {
 
   updateSelection(event: any) {
     this.usersSelected = event;
+  }
+
+  onDelete(event: any) {
+    this.appAuthService.removeUsers([event]);
+  }
+
+  openInfoDialog(isNew = true, data?: any) {
+    return this.matDialog
+      .open(UserDialogAddEditComponent, {
+        width: '45%',
+        disableClose: true,
+        data: {isNew, data}
+      })
   }
 
   private _getUsers() {

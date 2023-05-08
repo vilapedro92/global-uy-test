@@ -1,0 +1,56 @@
+<div class="header">
+  <button mat-icon-button class="close-button" (click)="dialogRef.close(true)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+  <h2 class="text-center" matDialogTitle>{{data.isNew ? 'Crear Usuario' : 'Editar Usuario'}}</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <section class="max-height flex items-center">
+    <div class="p-8 rounded-lg w-full">
+      <form class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 " [formGroup]="formGroup">
+        <guy-form-field-input
+          [label]="'Nombre'"
+          [control]="formGroup.controls.name"
+          [type]="'text'"
+          [hintText]="'Nombres y Apellidos'"
+        ></guy-form-field-input>
+        <guy-form-field-input
+          [label]="'Email'"
+          [control]="formGroup.controls.email"
+          [type]="'text'"
+          [hintText]="'Correo Electronico'"
+        ></guy-form-field-input>
+        <guy-form-field-input
+          [label]="'CI'"
+          [control]="formGroup.controls.ci"
+          [type]="'text'"
+          [hintText]="'Ej.: KP009987'"
+        ></guy-form-field-input>
+        <guy-form-field-select
+          [list]="roles"
+          [label]="'Rol'"
+          [hintText]="'Seleccione su rol'"
+          [control]="formGroup.controls.role"
+        ></guy-form-field-select>
+        <guy-form-field-select
+          [list]="cargos"
+          [label]="'Cargo'"
+          [hintText]="'Seleccione su cargo'"
+          [control]="formGroup.controls.cargo"
+        ></guy-form-field-select>
+      </form>
+
+      <div class="mx-w2 float-right">
+        <guy-button-loading
+          [text]="'Aceptar'"
+          [loading]="false"
+          (clickButton)="save($event)"
+        >
+        </guy-button-loading>
+      </div>
+    </div>
+  </section>
+
+</mat-dialog-content>
+

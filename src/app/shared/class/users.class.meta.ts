@@ -7,7 +7,7 @@ export class UsersClassMeta {
     "email": "cwethers0@pen.io",
     "ci": 44568976,
     "cargo": "Administrativo",
-    "role": "Admin"
+    "role": "Administrador"
   }, {
     "id": 87,
     "name": "Waverly Sprowle",
@@ -28,6 +28,6 @@ export class UsersClassMeta {
     "email": "mlynagh3@rakuten.co.jp",
     "ci": 43021740,
     "cargo": "Administrativo",
-    "role": "Admin"
+    "role": "Administrador"
   }]
 }
