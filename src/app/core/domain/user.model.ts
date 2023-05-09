@@ -5,4 +5,5 @@ export interface IUser {
   ci: number;
   cargo: string;
   role: string;
+  building: string;
 }

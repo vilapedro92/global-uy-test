@@ -7,7 +7,7 @@
 
 <mat-dialog-content class="mat-typography">
   <section class="max-height flex items-center">
-    <div class="p-8 rounded-lg w-full">
+    <div class="p-4 rounded-lg w-full">
       <form class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 " [formGroup]="formGroup">
         <guy-form-field-input
           [label]="'Nombre'"
@@ -27,6 +27,12 @@
           [type]="'text'"
           [hintText]="'Ej.: KP009987'"
         ></guy-form-field-input>
+        <guy-form-field-input
+          [label]="'Edificio'"
+          [control]="formGroup.controls.building"
+          [type]="'text'"
+          [hintText]="'Identificacion del Edificio'"
+        ></guy-form-field-input>
         <guy-form-field-select
           [list]="roles"
           [label]="'Rol'"
@@ -41,7 +47,7 @@
         ></guy-form-field-select>
       </form>
 
-      <div class="mx-w2 float-right">
+      <div class="mx-w2 mt-6 float-right">
         <guy-button-loading
           [text]="'Aceptar'"
           [loading]="false"

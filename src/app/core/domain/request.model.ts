@@ -5,4 +5,5 @@ export interface IRequestModel {
   quantity: number;
   date: string;
   clientDirection: string;
+  building: string;
 }

@@ -13,6 +13,7 @@ export interface UserFormControl {
   cargo: FormControl,
   role: FormControl,
   id: FormControl,
+  building: FormControl,
 }
 
 
@@ -34,6 +35,7 @@ export class UserDialogAddEditComponent implements OnInit {
       ci: new FormControl('', Validators.required),
       cargo: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),
+      building: new FormControl('', Validators.required),
       id: new FormControl(),
     }
   )
@@ -53,6 +55,7 @@ export class UserDialogAddEditComponent implements OnInit {
         email: this.data.data.email,
         role: this.data.data.role,
         name: this.data.data.name,
+        building: this.data.data.building,
         id: this.data.data.id
       })
     }

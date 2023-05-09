@@ -28,6 +28,10 @@ export class UserListMeta {
       displayedColumn: 'role',
       displayedColumnName: 'Rol'
     },
+    {
+      displayedColumn: 'building',
+      displayedColumnName: 'Edificio'
+    }
   ]
 
   static readonly actionsList: ActionsType[] = [

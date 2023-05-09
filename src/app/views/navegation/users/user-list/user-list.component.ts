@@ -70,7 +70,7 @@ export class UserListComponent implements OnInit {
   openInfoDialog(isNew = true, data?: any) {
     return this.matDialog
       .open(UserDialogAddEditComponent, {
-        width: '45%',
+        minWidth: '50%',
         disableClose: true,
         data: {isNew, data}
       }).afterClosed()

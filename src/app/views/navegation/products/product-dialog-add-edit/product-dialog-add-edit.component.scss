@@ -29,41 +29,18 @@ button {
   padding: 5px 0 1px;
 }
 
-.mbs-16 {
-  margin-bottom: 16px !important;
-}
-
 .mx-w {
   min-height: 46px;
   width: 185px;
-}
-
-.ln-green {
-  color: #577778;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.h1-color {
-  color: #372121;
-  font-size: 24px;
-  font-weight: 600;
 }
 
 .mx-w2 {
   width: 192px;
 }
 
-.text-primary-color {
-  color: #577778;
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .max-height {
   height: calc(100% - 114px);
 }
-
 
 guy-button-loading::ng-deep div > button {
   height: 48px !important;

@@ -29,6 +29,10 @@ export class RequestListMeta {
       displayedColumn: 'clientDirection',
       displayedColumnName: 'Direccion'
     },
+    {
+      displayedColumn: 'building',
+      displayedColumnName: 'Edificio'
+    }
   ]
 
   static readonly actionsList: ActionsType[] = [

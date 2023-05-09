@@ -43,7 +43,7 @@ export class RequestListComponent implements OnInit {
   reject(event: any) {
     return this.matDialog
       .open(RequestRejectDialogComponent, {
-        width: '30%',
+        minWidth: '40%',
         disableClose: true,
         data: {}
       }).afterClosed()

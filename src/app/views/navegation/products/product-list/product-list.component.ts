@@ -57,7 +57,7 @@ export class ProductListComponent implements OnInit {
   openInfoDialog(isNew = true, data?: any) {
     return this.matDialog
       .open(ProductDialogAddEditComponent, {
-        width: '40%',
+        minWidth: '40%',
         disableClose: true,
         data: {isNew, data}
       }).afterClosed()

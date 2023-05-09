@@ -4,7 +4,7 @@ import {IsAdmin} from "../../shared/guards/auth.guard";
 
 const routes: Routes = [
   {
-    path: 'user',
+    path: 'users',
     canActivate: [IsAdmin],
     loadChildren: () => import('./users/user.module').then(m => m.UserModule),
     data: {title: 'Users', breadcrumb: 'Users List'}
