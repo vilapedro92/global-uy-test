@@ -37,7 +37,7 @@ import {NotFoundComponent} from './views/common/not-found/not-found.component';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('586077437357-5ig7sbeqvhbme3b6itv4630cdgh1t2o2.apps.googleusercontent.com')
+            provider: new GoogleLoginProvider('586077437357-c70pju6dk19ugmsqkrbnoujtq16rhia5.apps.googleusercontent.com')
           }
         ],
         onError: (err) => {
