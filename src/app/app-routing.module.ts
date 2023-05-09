@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthLayoutComponent} from "./shared/components/layouts/auth-layout/auth-layout.component";
 import {NavLayoutsComponent} from "./shared/components/layouts/nav-layouts/nav-layouts.component";
-import {UserIsLoggedIn} from "./shared/guards/auth.guard";
+import {UserIsLoggedIn, UserNotLoggedIn} from "./shared/guards/auth.guard";
+import {NotFoundComponent} from "./views/common/not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate: [UserNotLoggedIn],
     children: [
       {
         path: 'sessions',
@@ -32,6 +34,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

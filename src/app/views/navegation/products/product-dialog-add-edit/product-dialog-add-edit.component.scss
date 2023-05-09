@@ -1,3 +1,4 @@
+
 h2 {
   align-items: center;
   color: #372121 !important;
@@ -10,7 +11,7 @@ h2 {
 
 button {
   height: 48px !important;
-  width: 48px!important;
+  width: 48px !important;
 }
 
 .close-button {
@@ -53,16 +54,17 @@ button {
   width: 192px;
 }
 
-.text-primary-color{
+.text-primary-color {
   color: #577778;
   font-size: 14px;
   font-weight: 500;
 }
 
-guy-button-loading::ng-deep div > button {
-  height: 48px!important;
-}
-
 .max-height {
   height: calc(100% - 114px);
+}
+
+
+guy-button-loading::ng-deep div > button {
+  height: 48px !important;
 }

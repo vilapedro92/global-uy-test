@@ -17,7 +17,7 @@ export interface UserFormControl {
 
 
 @Component({
-  selector: 'app-user-dialog-add-edit',
+  selector: 'app-users-dialog-add-edit',
   templateUrl: './user-dialog-add-edit.component.html',
   styleUrls: ['./user-dialog-add-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -64,7 +64,7 @@ export class UserDialogAddEditComponent implements OnInit {
     }
 
     this.data.isNew ?
-      this.appAuthService.addUser({...this.formGroup.value, id: this.appAuthService.getNewId()} as IUser) :
+      this.appAuthService.addUser({...this.formGroup.value, id: this.appAuthService.getNewUserId()} as IUser) :
       this.appAuthService.editUser({...this.formGroup.value} as IUser);
 
     this.dialogRef.close(true);

@@ -1,1 +1,36 @@
-<p>product-list works!</p>
+<section class="guy-list-container">
+
+  <div class="guy-list-header mb-10">
+    <label class="guy-header-label">Productos</label>
+    <div class="w-48">
+      <app-guy-button
+        [text]="'Crear nuevo'"
+        [icon]="'add'"
+        [color]="btnColor.DARK"
+        (clickButton)="openInfoDialog()">
+      </app-guy-button>
+    </div>
+  </div>
+
+  <div class="guy-list-header mb-6">
+    <div class="w-96">
+      <guy-form-filed-search
+        (keyUP)="applyFilter($event)">
+      </guy-form-filed-search>
+    </div>
+  </div>
+
+  <div *ngIf="(products$ | async) as products" class="pt-8">
+    <guy-table
+      [actionsList]="tableActions"
+      [config]="tableConfig"
+      [elements]="products"
+      [search]="search"
+      [haveChecks]="false"
+      (onDelete)="onDelete($event)"
+      (onEdit)="openInfoDialog(false, $event)"
+    >
+    </guy-table>
+  </div>
+
+</section>

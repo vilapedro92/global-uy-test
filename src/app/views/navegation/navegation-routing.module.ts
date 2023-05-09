@@ -6,11 +6,12 @@ const routes: Routes = [
   {
     path: 'user',
     canActivate: [IsAdmin],
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    loadChildren: () => import('./users/user.module').then(m => m.UserModule),
     data: {title: 'Users', breadcrumb: 'Users List'}
   },
   {
     path: 'request',
+    canActivate: [IsAdmin],
     loadChildren: () => import('./requests/requests.module').then(m => m.RequestsModule),
     data: {title: 'Requests', breadcrumb: 'Request List'}
   },

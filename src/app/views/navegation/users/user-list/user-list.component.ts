@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {NotificationService} from "../../../../shared/services/notification.service";
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-users-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
@@ -64,7 +64,7 @@ export class UserListComponent implements OnInit {
 
   onDelete(event: any) {
     this.appAuthService.removeUsers([event]);
-    this.notificationService.openInfo('Usuario Eliminado')
+    this.notificationService.openInfo('Usuario eliminado')
   }
 
   openInfoDialog(isNew = true, data?: any) {

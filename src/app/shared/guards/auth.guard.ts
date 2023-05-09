@@ -28,21 +28,8 @@ export class UserNotLoggedIn implements CanActivate {
   canActivate(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise(async (resolve, reject) => {
       const user = sessionStorage.getItem('user');
-      !user ? resolve(true) : reject(this.router.navigateByUrl(''));
+      !user ? resolve(true) : reject(this.router.navigateByUrl('/product/list'));
     });
-  }
-}
-
-// TODO AJUSTAR LOS GUARDS PARA Q TE REDIRECCIONE...
-
-@Injectable({
-  providedIn: 'root',
-})
-export class IsUser implements CanActivate {
-  private permission = inject(PermissionsService);
-
-  canActivate(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.permission.isAdmin()
   }
 }
 
@@ -52,8 +39,14 @@ export class IsUser implements CanActivate {
 })
 export class IsAdmin implements CanActivate {
   private permission = inject(PermissionsService);
+  private router = inject(Router);
 
   canActivate(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.permission.isAdmin()
+    if (!this.permission.isAdmin()) {
+      this.router.navigate(['/product/list']);
+      return false
+    }
+
+    return true;
   }
 }

@@ -2,7 +2,7 @@
   <button mat-icon-button class="close-button" (click)="dialogRef.close(false)">
     <mat-icon class="close-icon">close</mat-icon>
   </button>
-  <h2 class="text-center" matDialogTitle>Informacion</h2>
+  <h2 class="text-center" matDialogTitle>{{data.isNew ? 'Crear Producto' : 'Editar Producto'}}</h2>
 </div>
 
 <mat-dialog-content class="mat-typography">
@@ -10,10 +10,10 @@
     <div class="p-8 rounded-lg w-full">
       <form class="grid grid-cols-1 " [formGroup]="formGroup">
         <guy-form-field-input
-          [label]="'Motivo'"
-          [control]="formGroup.controls.text"
+          [label]="'Producto'"
+          [control]="formGroup.controls.name"
           [type]="'text'"
-          [hintText]="'Motivo del rechazo'"
+          [hintText]="'Nombres del producto'"
         ></guy-form-field-input>
       </form>
 

@@ -12,11 +12,13 @@ import {
   SocialAuthServiceConfig,
   GoogleLoginProvider,
 } from '@abacritt/angularx-social-login';
+import {NotFoundComponent} from './views/common/not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

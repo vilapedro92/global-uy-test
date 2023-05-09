@@ -11,14 +11,14 @@ export class NavigationService {
     {
       label: 'Usuarios',
       icon: 'people',
-      routerLink: '/user/list',
+      routerLink: '/users/list',
       permission: RoleEnum.Administrador
     },
     {
       label: 'Pedidos',
       icon: 'receipt_long',
       routerLink: '/request/list',
-      permission: RoleEnum.All
+      permission: RoleEnum.Administrador
     },
     {
       label: 'Productos',

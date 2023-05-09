@@ -20,8 +20,8 @@ export class AppAuthService {
       password: 'admin123**',
       role: RoleEnum.Administrador
     }, {
-      email: 'usuario1@gmail.com',
-      password: 'usuario123**',
+      email: 'user1@gmail.com',
+      password: 'user123**',
       role: RoleEnum.Usuario
     }
   ]
@@ -48,9 +48,14 @@ export class AppAuthService {
     })
   }
 
-  getNewId(): number {
+  getNewUserId(): number {
     const usersId = this.userList.map(el => el.id);
     return usersId.length ? Math.max(...usersId) + 1 : 1;
+  }
+
+  getNewProductId(): number {
+    const productId = this.productsList.map(el => el.id);
+    return productId.length ? Math.max(...productId) + 1 : 1;
   }
 
   removeUsers(iUser: IUser[]) {
@@ -75,6 +80,28 @@ export class AppAuthService {
     this.userList = users;
 
     this.users.next(this.userList)
+  }
+
+  removeProduct(iProduct: IProduct) {
+    this.productsList = this.productsList.filter(el => el.id !== iProduct.id)
+
+    this.products.next(this.productsList);
+  }
+
+  addProducts(iProduct: IProduct) {
+    const products = [...this.productsList, iProduct];
+    this.productsList = products;
+
+    this.products.next(this.productsList);
+  }
+
+  editProducts(iProduct: IProduct) {
+    const index = this.productsList.findIndex((product) => product.id === iProduct.id);
+    const products = [...this.productsList];
+    products[index] = iProduct;
+    this.productsList = products;
+
+    this.products.next(this.productsList)
   }
 
 }

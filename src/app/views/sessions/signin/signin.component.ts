@@ -79,7 +79,7 @@ export class SigninComponent {
 
   private _goToDashboard(user: UserInterface) {
     this.permissionsService.isAdmin() ?
-      this.router.navigate(['/user/list']) :
+      this.router.navigate(['/users/list']) :
       this.router.navigate(['/product/list']);
   }
 
