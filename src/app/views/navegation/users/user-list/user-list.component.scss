@@ -1,0 +1,20 @@
+
+.guy-remove-all {
+  align-items: center;
+  justify-content: space-around;
+  color: #9A3648;
+  display: flex;
+  cursor: pointer;
+
+  span {
+    text-decoration-line: underline;
+  }
+}
+
+app-guy-button::ng-deep div > button {
+  height: 54px !important;
+}
+
+mat-tab-group::ng-deep div.mat-mdc-tab-list {
+  border-bottom: 1.5px solid #D4D4D4 !important;
+}

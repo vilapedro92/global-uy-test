@@ -1,0 +1,47 @@
+
+h2 {
+  align-items: center;
+  color: #372121 !important;
+  display: flex;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+button {
+  height: 48px !important;
+  width: 48px !important;
+}
+
+.close-button {
+  float: right;
+  top: -2px;
+  right: 1px;
+  z-index: 1;
+}
+
+.header {
+  border-radius: 3px;
+  font-weight: 500;
+  height: auto;
+  line-height: 20px;
+  padding: 5px 0 1px;
+}
+
+.mx-w {
+  min-height: 46px;
+  width: 185px;
+}
+
+.mx-w2 {
+  width: 192px;
+}
+
+.max-height {
+  height: calc(100% - 114px);
+}
+
+guy-button-loading::ng-deep div > button {
+  height: 48px !important;
+}

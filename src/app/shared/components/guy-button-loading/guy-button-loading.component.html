@@ -1,0 +1,14 @@
+<div>
+  <button
+    [ngClass]="color === 'LIGHT' ? 'guy-color-light' : 'guy-color-dark'"
+    [disabled]="loading || disable"
+    (click)="onClick()">
+    <div class="center-div">
+      <span>{{ loading ? textLoading : text }}</span>
+      <span matPrefix *ngIf="loading" class="ml-2">
+                <mat-spinner diameter="20"></mat-spinner>
+            </span>
+    </div>
+  </button>
+</div>
+

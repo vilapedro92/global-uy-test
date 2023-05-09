@@ -1,0 +1,11 @@
+<div>
+  <button
+    [ngClass]="color === 'LIGHT' ? 'guy-color-light' : 'guy-color-dark'"
+    [disabled]="disabled"
+    (click)="onClick()"
+  >
+    <div class="center-div text-center">
+      <span matPrefix *ngIf="icon" class="material-icons mr-2"> {{icon}} </span>  {{ text }}
+    </div>
+  </button>
+</div>

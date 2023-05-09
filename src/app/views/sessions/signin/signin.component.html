@@ -1,0 +1,47 @@
+<section class="guy-session-container">
+  <div class="guy-div-container">
+
+    <guy-logo></guy-logo>
+
+    <form
+      class="grid grid-cols-1 gap-y-2"
+      [formGroup]="formGroup">
+      <guy-form-field-input
+        [label]="'Correo Electrónico'"
+        [control]="formGroup.controls.username"
+        [type]="'text'"
+      ></guy-form-field-input>
+      <guy-form-field-input-password
+        class="mt-1"
+        [label]="'Contraseña'"
+        [control]="formGroup.controls.password"
+      ></guy-form-field-input-password>
+    </form>
+
+    <label class="guy-forgot-pass">¿Olvidaste tu contraseña?</label>
+
+    <guy-button-loading
+      class="mb-6"
+      [text]="'Continuar'"
+      [loading]="loading"
+      (clickButton)="signin()"
+    >
+    </guy-button-loading>
+
+    <guy-divisor class="mb-6">
+    </guy-divisor>
+
+    <asl-google-signin-button
+      type='icon'
+      size='large'>
+    </asl-google-signin-button>
+
+    <label class="guy-not-account mb-4">¿No tienes una cuenta?</label>
+
+    <app-guy-button
+      [text]="'Registrarme'"
+    >
+    </app-guy-button>
+
+  </div>
+</section>

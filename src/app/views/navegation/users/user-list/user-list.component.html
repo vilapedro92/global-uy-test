@@ -1,0 +1,54 @@
+<section class="guy-list-container">
+
+  <div class="guy-list-header mb-10">
+    <label class="guy-header-label">Usuarios</label>
+    <div class="w-48">
+      <app-guy-button
+        [text]="'Crear nuevo'"
+        [icon]="'add'"
+        [color]="btnColor.DARK"
+        (clickButton)="openInfoDialog()">
+      </app-guy-button>
+    </div>
+  </div>
+
+  <div class="guy-list-header mb-6">
+    <div class="w-96">
+      <guy-form-filed-search
+        (keyUP)="applyFilter($event)">
+      </guy-form-filed-search>
+    </div>
+    <div class="guy-remove-all">
+      <mat-icon>delete</mat-icon>
+      <span (click)="delete()">Borrar selección ({{usersSelected.length}})</span>
+    </div>
+  </div>
+
+  <div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Activos">
+        <ng-container *ngTemplateOutlet="table"></ng-container>
+      </mat-tab>
+      <mat-tab label="Inactivos">
+        <ng-container *ngTemplateOutlet="table"></ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+</section>
+
+<ng-template #table>
+  <div *ngIf="(users$ | async) as users" class="pt-8">
+    <guy-table
+      [actionsList]="tableActions"
+      [config]="tableConfig"
+      [elements]="users"
+      [search]="search"
+      (onDelete)="onDelete($event)"
+      (onEdit)="openInfoDialog(false, $event)"
+      (wasChecked)="updateSelection($event)"
+    >
+    </guy-table>
+  </div>
+</ng-template>
+

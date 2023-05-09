@@ -1,0 +1,12 @@
+<div>
+  <mat-label>{{ label }}</mat-label>
+  <mat-form-field appearance="outline">
+    <mat-select [formControl]="control" (selectionChange)="select($event)">
+      <mat-option [value]="item?.value" *ngFor="let item of list">{{ item?.key }}</mat-option>
+    </mat-select>
+    <mat-hint>{{hintText}}</mat-hint>
+    <mat-error *ngIf="control.hasError('required') && control.touched" class="form-error-msg">
+      {{error}}
+    </mat-error>
+  </mat-form-field>
+</div>
