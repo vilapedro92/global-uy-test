@@ -2,12 +2,14 @@ import {inject, Injectable} from '@angular/core';
 import {RoleEnum, RoleType} from "../enum/role.enum";
 import {UserInterface} from "../interfaces/user.interface";
 import {Router} from "@angular/router";
+import {SocialAuthService} from "@abacritt/angularx-social-login";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsService {
 
+  authService = inject(SocialAuthService);
   router = inject(Router);
 
   get permissionsList() {
@@ -39,6 +41,10 @@ export class PermissionsService {
 
   logOut() {
     sessionStorage.removeItem('user');
-    this.router.navigate([''])
+    if (sessionStorage.getItem('isGoogle')) {
+      this.authService.signOut();
+      sessionStorage.removeItem('isGoogle')
+    }
+    this.router.navigate(['']);
   }
 }
