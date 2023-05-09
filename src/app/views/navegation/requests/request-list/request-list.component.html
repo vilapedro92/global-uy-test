@@ -1,13 +1,17 @@
 <section class="guy-list-container">
 
   <div class="guy-list-header mb-10">
-    <label class="guy-header-label">Solicitudes</label>
+    <label class="guy-header-label">Pedidos</label>
   </div>
 
   <div *ngIf="(requests$ | async) as request" class="pt-8">
     <guy-table
-      [elements]="request"
       [config]="tableConfig"
+      [elements]="request"
+      [haveChecks]="false"
+      [actionsList]="tableActions"
+      (onResolve)="resolve($event)"
+      (onReject)="reject($event)"
     >
     </guy-table>
   </div>

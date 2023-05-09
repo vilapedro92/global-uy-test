@@ -9,4 +9,4 @@ export enum DataTableItemEnum {
   'TEXT' = 'TEXT'
 }
 
-type DataTableItemType = 'DATE' | 'TEXT'
+export type DataTableItemType = 'DATE' | 'TEXT'

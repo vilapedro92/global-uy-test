@@ -1,4 +1,5 @@
 import {DataTableInterface} from "../../../../shared/interfaces/data-table.interface";
+import {ActionsEnum, ActionsType} from "../../../../shared/enum/actions.enum";
 
 export class UserListMeta {
 
@@ -27,5 +28,10 @@ export class UserListMeta {
       displayedColumn: 'role',
       displayedColumnName: 'Rol'
     },
+  ]
+
+  static readonly actionsList: ActionsType[] = [
+    ActionsEnum.EDIT,
+    ActionsEnum.DELETE
   ]
 }

@@ -6,7 +6,7 @@ import {CargoClassMeta} from "../../../../shared/class/cargo.class.meta";
 import {AppAuthService} from "../../../../shared/services/app-auth.service";
 import {IUser} from "../../../../core/domain/user.model";
 
-export interface SessionFormControl {
+export interface UserFormControl {
   name: FormControl,
   email: FormControl,
   ci: FormControl,
@@ -27,7 +27,7 @@ export class UserDialogAddEditComponent implements OnInit {
   roles = RoleClassMeta.roles.map(el => ({key: el.name, value: el.name}));
   cargos = CargoClassMeta.cargos.map(el => ({key: el.name, value: el.name}));
 
-  formGroup: FormGroup<SessionFormControl> = new FormGroup(
+  formGroup: FormGroup<UserFormControl> = new FormGroup(
     {
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -67,7 +67,7 @@ export class UserDialogAddEditComponent implements OnInit {
       this.appAuthService.addUser({...this.formGroup.value, id: this.appAuthService.getNewId()} as IUser) :
       this.appAuthService.editUser({...this.formGroup.value} as IUser);
 
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
 }

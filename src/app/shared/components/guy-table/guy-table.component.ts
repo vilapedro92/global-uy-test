@@ -5,7 +5,9 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-import {DataTableInterface} from "../../interfaces/data-table.interface";
+import {DataTableInterface, DataTableItemEnum, DataTableItemType} from "../../interfaces/data-table.interface";
+import {ActionsEnum, ActionsType} from "../../enum/actions.enum";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'guy-table',
@@ -14,13 +16,17 @@ import {DataTableInterface} from "../../interfaces/data-table.interface";
 })
 export class GuyTableComponent implements OnChanges, OnInit {
 
-  @Input() elements: any[] = [];
+  @Input() actionsList: ActionsType[] = [];
   @Input() config!: DataTableInterface[];
+  @Input() elements: any[] = [];
+  @Input() haveChecks: boolean = true;
   @Input() search: string = '';
 
   @Output() wasChecked = new EventEmitter<any>();
   @Output() onEdit = new EventEmitter<any>();
   @Output() onDelete = new EventEmitter<any>();
+  @Output() onResolve = new EventEmitter<any>();
+  @Output() onReject = new EventEmitter<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -29,7 +35,13 @@ export class GuyTableComponent implements OnChanges, OnInit {
   dataSource: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
 
-  constructor() {
+  get actionsListEnum() {
+    return ActionsEnum
+  }
+
+  constructor(
+    private datePipe: DatePipe,
+  ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -45,8 +57,24 @@ export class GuyTableComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.displayedColumns = ['select', ...this.config.map(el => el.displayedColumn), 'actions'];
+    const select = []
+    const actions = []
+
+    if (this.haveChecks) {
+      select.push('select')
+    }
+    if (this.actionsList.length) {
+      actions.push('actions')
+    }
+
+    this.displayedColumns = [...select, ...this.config.map(el => el.displayedColumn), ...actions];
     this.dataSource = new MatTableDataSource(this.elements);
+  }
+
+  getDisplayedColumnFormat<T>(text: T, format: DataTableItemType = DataTableItemEnum.TEXT) {
+    return format === DataTableItemEnum.DATE ?
+      this.datePipe.transform(text as string, 'dd-MM-yyyy') :
+      text
   }
 
   edit(row: any) {
@@ -55,6 +83,14 @@ export class GuyTableComponent implements OnChanges, OnInit {
 
   remove(row: any) {
     this.onDelete.emit(row)
+  }
+
+  resolve(row: any) {
+    this.onResolve.emit(row)
+  }
+
+  reject(row: any) {
+    this.onReject.emit(row)
   }
 
   isAllSelected() {

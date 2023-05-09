@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {AuthLayoutComponent} from "./layouts/auth-layout/auth-layout.component";
 import {NavLayoutsComponent} from "./layouts/nav-layouts/nav-layouts.component";
 import {RouterModule, RouterOutlet} from "@angular/router";
@@ -18,8 +18,8 @@ import {GuySideNavComponent} from './guy-side-nav/guy-side-nav.component';
 import {GuySideNavItemComponent} from './guy-side-nav-item/guy-side-nav-item.component';
 import {SharedDirectivesModule} from "../directives/shared-directives.modules";
 import {GuyFormFiledSearchComponent} from './guy-form-filed-search/guy-form-filed-search.component';
-import { GuyTableComponent } from './guy-table/guy-table.component';
-import { GuyFormFieldSelectComponent } from './guy-form-field-select/guy-form-field-select.component';
+import {GuyTableComponent} from './guy-table/guy-table.component';
+import {GuyFormFieldSelectComponent} from './guy-form-field-select/guy-form-field-select.component';
 
 const components = [
   AuthLayoutComponent,
@@ -51,7 +51,8 @@ const components = [
     ReactiveFormsModule,
     SharedDirectivesModule
   ],
-  exports: [...components]
+  exports: [...components],
+  providers: [DatePipe]
 })
 export class ComponentsModule {
 }

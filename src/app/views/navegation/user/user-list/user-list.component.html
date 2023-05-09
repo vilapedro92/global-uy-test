@@ -40,12 +40,13 @@
 <ng-template #table>
   <div *ngIf="(users$ | async) as users" class="pt-8">
     <guy-table
-      [elements]="users"
+      [actionsList]="tableActions"
       [config]="tableConfig"
+      [elements]="users"
       [search]="search"
-      (wasChecked)="updateSelection($event)"
-      (onEdit)="openInfoDialog(false, $event)"
       (onDelete)="onDelete($event)"
+      (onEdit)="openInfoDialog(false, $event)"
+      (wasChecked)="updateSelection($event)"
     >
     </guy-table>
   </div>

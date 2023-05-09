@@ -1,4 +1,5 @@
 import {DataTableInterface, DataTableItemEnum} from "../../../../shared/interfaces/data-table.interface";
+import {ActionsEnum, ActionsType} from "../../../../shared/enum/actions.enum";
 
 export class RequestListMeta {
 
@@ -28,5 +29,10 @@ export class RequestListMeta {
       displayedColumn: 'clientDirection',
       displayedColumnName: 'Direccion'
     },
+  ]
+
+  static readonly actionsList: ActionsType[] = [
+    ActionsEnum.RESOLVE,
+    ActionsEnum.REJECT
   ]
 }

@@ -2,10 +2,11 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {BtnColorEnum} from "../../../../shared/enum/btn-color.enum";
 import {UserListMeta as Meta} from "./user-list.meta";
 import {AppAuthService} from "../../../../shared/services/app-auth.service";
-import {Observable} from "rxjs";
+import {Observable, take} from "rxjs";
 import {IUser} from "../../../../core/domain/user.model";
 import {UserDialogAddEditComponent} from "../user-dialog-add-edit/user-dialog-add-edit.component";
 import {MatDialog} from "@angular/material/dialog";
+import {NotificationService} from "../../../../shared/services/notification.service";
 
 @Component({
   selector: 'app-user-list',
@@ -27,10 +28,15 @@ export class UserListComponent implements OnInit {
     return Meta.tableConfig;
   }
 
+  get tableActions() {
+    return Meta.actionsList;
+  }
+
   constructor(
     private appAuthService: AppAuthService,
     private cdr: ChangeDetectorRef,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private notificationService: NotificationService
   ) {
   }
 
@@ -49,6 +55,7 @@ export class UserListComponent implements OnInit {
 
     this.appAuthService.removeUsers(this.usersSelected);
     this.usersSelected = [];
+    this.notificationService.openInfo('Usuarios Eliminados')
   }
 
   updateSelection(event: any) {
@@ -57,6 +64,7 @@ export class UserListComponent implements OnInit {
 
   onDelete(event: any) {
     this.appAuthService.removeUsers([event]);
+    this.notificationService.openInfo('Usuario Eliminado')
   }
 
   openInfoDialog(isNew = true, data?: any) {
@@ -65,6 +73,10 @@ export class UserListComponent implements OnInit {
         width: '45%',
         disableClose: true,
         data: {isNew, data}
+      }).afterClosed()
+      .pipe(take(1))
+      .subscribe(res => {
+        if (res) this.notificationService.openInfo(isNew ? 'Ha sido agregado el usuario' : 'Ha sido actualizado el usuario')
       })
   }
 

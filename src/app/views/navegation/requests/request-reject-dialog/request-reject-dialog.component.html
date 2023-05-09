@@ -1,0 +1,31 @@
+<div class="header">
+  <button mat-icon-button class="close-button" (click)="dialogRef.close(false)">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <section class="max-height flex items-center">
+    <div class="p-8 rounded-lg w-full">
+      <form class="grid grid-cols-1 " [formGroup]="formGroup">
+        <guy-form-field-input
+          [label]="'Motivo'"
+          [control]="formGroup.controls.text"
+          [type]="'text'"
+          [hintText]="'Motivo del rechazo'"
+        ></guy-form-field-input>
+      </form>
+
+      <div class="mx-w2 float-right">
+        <guy-button-loading
+          [text]="'Aceptar'"
+          [loading]="false"
+          (clickButton)="save()"
+        >
+        </guy-button-loading>
+      </div>
+    </div>
+  </section>
+
+</mat-dialog-content>
+
