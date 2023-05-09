@@ -14,14 +14,14 @@ export class UsersClassMeta {
     "email": "wsprowle1@opera.com",
     "ci": 45216791,
     "cargo": "Limpieza",
-    "role": "User"
+    "role": "Usuario"
   }, {
     "id": 7,
     "name": "Hernando Stiell",
     "email": "hstiell2@unicef.org",
     "ci": 46726622,
     "cargo": "Limpieza",
-    "role": "User"
+    "role": "Usuario"
   }, {
     "id": 19,
     "name": "Miquela Lynagh",

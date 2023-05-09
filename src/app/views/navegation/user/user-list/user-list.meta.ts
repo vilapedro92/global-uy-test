@@ -17,7 +17,7 @@ export class UserListMeta {
     },
     {
       displayedColumn: 'ci',
-      displayedColumnName: 'Cedula'
+      displayedColumnName: 'CI'
     },
     {
       displayedColumn: 'cargo',

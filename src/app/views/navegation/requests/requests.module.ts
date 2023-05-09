@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { RequestsRoutingModule } from './requests-routing.module';
-import { RequestListComponent } from './request-list/request-list.component';
+import {RequestsRoutingModule} from './requests-routing.module';
+import {RequestListComponent} from './request-list/request-list.component';
+import {SharedModule} from "../../../shared/shared.module";
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { RequestListComponent } from './request-list/request-list.component';
   ],
   imports: [
     CommonModule,
-    RequestsRoutingModule
+    RequestsRoutingModule,
+    SharedModule
   ]
 })
-export class RequestsModule { }
+export class RequestsModule {
+}

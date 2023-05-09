@@ -1,1 +1,16 @@
-<p>request-list works!</p>
+<section class="guy-list-container">
+
+  <div class="guy-list-header mb-10">
+    <label class="guy-header-label">Solicitudes</label>
+  </div>
+
+  <div *ngIf="(requests$ | async) as request" class="pt-8">
+    <guy-table
+      [elements]="request"
+      [config]="tableConfig"
+    >
+    </guy-table>
+  </div>
+
+</section>
+

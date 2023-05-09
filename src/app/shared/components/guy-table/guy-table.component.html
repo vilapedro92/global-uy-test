@@ -1,7 +1,6 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
 
-    <!--    TODO VERIFICAR LOS CHECKBOXS-->
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox (change)="$event ? toggleAllRows() : null"
@@ -27,8 +26,8 @@
     <ng-container [matColumnDef]="'actions'">
       <th mat-header-cell *matHeaderCellDef> Acciones</th>
       <td mat-cell (click)="edit(row)" *matCellDef="let row">
-        <mat-icon color="primary" class="cursor-pointer mr-2" (click)="edit(row); $event.stopPropagation()">edit</mat-icon>
-        <mat-icon color="warn" class="cursor-pointer ml-2" (click)="remove(row); $event.stopPropagation()">cancel</mat-icon>
+        <mat-icon color="primary" class="cursor-pointer mr-1" (click)="edit(row); $event.stopPropagation()">edit</mat-icon>
+        <mat-icon color="warn" class="cursor-pointer ml-1" (click)="remove(row); $event.stopPropagation()">cancel</mat-icon>
       </td>
     </ng-container>
 
